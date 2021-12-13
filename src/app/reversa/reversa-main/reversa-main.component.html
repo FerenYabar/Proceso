@@ -1,0 +1,41 @@
+
+        <div class="col-s-12">
+            <div class="reversa">
+                <h1>Mi reversa</h1>
+            </div>
+        </div>
+
+        <div class="col-s-12">
+
+            <div class="detalle">
+
+                <div class="detalle-producto">
+                    <div id="tittle">
+                        <h1>Producto</h1>
+                    </div>
+
+                    <div class="detalles" *ngFor="let producto of reservaService.getproductos">
+                        <div class="producto">
+                            <div id="nombre">
+                                <p>{{producto.getproductoDetalleReserva.getproducto.getnombreproducto}}</p>
+                            </div>
+                            <div id="precio">
+                                <p>{{producto.getproductoDetalleReserva.getprecioproductolocal*producto.getcantiaddDEtalleReserva}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total">
+                        <div id="total">
+                            <p>Total</p>
+                        </div>
+                        <div id="total-precio">
+                            <p>{{reservaService.total(reservaService.getproductos)}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reservar">
+                <button routerLink='entrega-pedidos'>Hacer reserva</button>
+            </div>
+        </div> 
