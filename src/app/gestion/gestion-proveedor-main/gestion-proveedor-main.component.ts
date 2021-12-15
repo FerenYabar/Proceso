@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GestionProveedorservice } from './services/gestion-proveedor.service';
-import { locales, Local } from '../../modelo/local.class';
+import {  Local } from '../../modelo/local.class';
 import { Producto } from 'src/app/modelo/producto.class';
 
 

@@ -1,30 +1,35 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { DetalleReserva } from "src/app/modelo/detallereserva.class";
-import { reservaactiva } from '../../entrega-pedidos/servicios.service';
+import { Router } from '@angular/router';
 
 
 @Injectable({
   providedIn:'root'
 })
 export class ReservaService{
-  constructor(private http:HttpClient){
-    this.http.get<DetalleReserva>('http://127.0.0.1:8080/api/detallereserva').subscribe((resp:any)=>{this.detallesreserva=resp;});
+  constructor(private http:HttpClient,private route:Router){
+    this.http.get<number>('http://localhost:8080/api/reservacarrito/'+localStorage.getItem("usuarioactivo")).toPromise().then((resp:number)=>{localStorage.setItem("carrito",resp.toString()); this.http.get<DetalleReserva[]>('http://localhost:8080/api/detallereservaporReserva/'+resp).toPromise().then((resp:DetalleReserva[])=>this.detallesreserva=resp)});
   }
 detallesreserva:DetalleReserva[]=[]
   
-   get getproductos():DetalleReserva[]{
-    this.detallesreserva= this.detallesreserva.filter(elemen => elemen.getReservas==reservaactiva[0]); 
+   get detallesreservas():DetalleReserva[]{
+    
     return this.detallesreserva
-
+    
           
   }
    total(detallereserva:DetalleReserva[]):number{
    let cant:number=0
     detallereserva.forEach(element => {
-   cant = cant+(element.getproductoDetalleReserva.getprecioproductolocal*element.getcantiaddDEtalleReserva) 
+   cant = cant+(element.tieneProductoLocal.precioProductoLocal*element.cantidadDetalleReserva) 
    }); 
    return cant
   }
+  reservar(){
+    this.http.get<number>('http://localhost:8080/api/reservar/'+localStorage.getItem("usuarioactivo")).toPromise().then((resp:number)=>{localStorage.setItem("carrito",resp.toString())});
+    this.route.navigate(['entrega-pedidos'])
+  }
+  
     
 }

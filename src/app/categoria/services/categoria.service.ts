@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Categoria, categorias } from '../../modelo/categoria.class';
+import { Categoria} from '../../modelo/categoria.class';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class CategoriaService {
 
   constructor(private route:Router,private http:HttpClient) { 
-    this.http.get<Categoria[]>('http://127.0.0.1:8080/api/categoria').subscribe((resp:any)=>{this.categoriass=resp;
+    this.http.get<Categoria[]>('http://127.0.0.1:8080/api/categoria').subscribe((resp:Categoria[])=>{this.categoriass=resp;
     });
   }
   categoriass:Categoria[]=[]
@@ -21,9 +21,7 @@ export class CategoriaService {
   
 
   ingresar(categoria:Categoria){
-    
-    categoriaActiva.splice(0,1)
-    categoriaActiva.push(categoria)
+    localStorage.setItem("categoriaactiva",categoria.codCategoria.toString())
   }
 }
 export const categoriaActiva:Categoria[]=[]

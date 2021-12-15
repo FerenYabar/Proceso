@@ -14,14 +14,18 @@
                         <h1>Producto</h1>
                     </div>
 
-                    <div class="detalles" *ngFor="let producto of reservaService.getproductos">
+                    <div class="detalles" *ngFor="let detallereserva of reservaService.detallesreservas">
                         <div class="producto">
                             <div id="nombre">
-                                <p>{{producto.getproductoDetalleReserva.getproducto.getnombreproducto}}</p>
+                                <p>{{detallereserva.tieneProductoLocal.tieneProducto.nombreProducto}}</p>
                             </div>
                             <div id="precio">
-                                <p>{{producto.getproductoDetalleReserva.getprecioproductolocal*producto.getcantiaddDEtalleReserva}}</p>
+                                <p>{{detallereserva.tieneProductoLocal.precioProductoLocal*detallereserva.cantidadDetalleReserva}}</p>
                             </div>
+                            <div id="precio">
+                                <p>{{detallereserva.cantidadDetalleReserva}}</p>
+                            </div>
+                            
                         </div>
                     </div>
                     <div class="total">
@@ -29,13 +33,13 @@
                             <p>Total</p>
                         </div>
                         <div id="total-precio">
-                            <p>{{reservaService.total(reservaService.getproductos)}}</p>
+                            <p>{{reservaService.total(reservaService.detallesreserva)}}</p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div id="reservar">
-                <button routerLink='entrega-pedidos'>Hacer reserva</button>
+                <button (click)="reservaService.reservar()">Hacer reserva</button>
             </div>
         </div> 

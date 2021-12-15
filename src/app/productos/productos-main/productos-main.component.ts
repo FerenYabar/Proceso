@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {  ProductoLocal } from '../../modelo/productolocal.class';
 import { ProductoService } from '../services/producto.service';
-import { categorias, Categoria } from '../../modelo/categoria.class';
+import {Categoria } from '../../modelo/categoria.class';
 import { Marca } from 'src/app/modelo/marca.class';
 import { Producto } from 'src/app/modelo/producto.class';
 import { Local } from 'src/app/modelo/local.class';

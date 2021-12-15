@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Marca, marcas } from '../../modelo/marca.class';
+import { Marca} from '../../modelo/marca.class';
 import { GestionMarcaservice } from './services/gestion-marca.service';
 
 @Component({
@@ -22,15 +22,15 @@ export class GestionMarcaMainComponent implements OnInit {
 
 
   nombreMarca:String=""
-  nuevaMarca = new Marca(0,this.nombreMarca,[])
-  actualizarMarca = new Marca(0,this.nombreMarca,[])
+  nuevaMarca = new Marca(0,this.nombreMarca)
+  actualizarMarca = new Marca(0,this.nombreMarca)
 
   crearMarca(){
-    this.gestionmarcaservice.agregarmarcaa(this.nuevaMarca).then(value => {this.gestionmarcaservice.listarMarca();});
+    this.gestionmarcaservice.agregarmarca(this.nuevaMarca).then(value => {this.gestionmarcaservice.listarMarca();});
   }
 
   eliminarMarca(id: any){
-    this.gestionmarcaservice.eliminarmarcaa(id).then(value => {this.gestionmarcaservice.listarMarca();})
+    this.gestionmarcaservice.eliminarmarca(id).then(value => {this.gestionmarcaservice.listarMarca();})
   }
 
   actualizarvariable(marcaactualizado: Marca){
@@ -39,7 +39,7 @@ export class GestionMarcaMainComponent implements OnInit {
   }
 
   actualizarMarcaF(){
-    this.gestionmarcaservice.atualizarmarcaa(this.actualizarMarca.codMarca,this.actualizarMarca).then(value => {this.gestionmarcaservice.listarMarca();})
+    this.gestionmarcaservice.atualizarmarca(this.actualizarMarca.codMarca,this.actualizarMarca).then(value => {this.gestionmarcaservice.listarMarca();})
   }
   
   ngOnInit(): void {
@@ -47,13 +47,5 @@ export class GestionMarcaMainComponent implements OnInit {
   
   eliminacion:number[]=[]
   
-  eliminar(){
-    this.gestionmarcaservice.eliminarmarca(this.eliminacion)
-    this.eliminacion=[]
-  }
-  
-  agregar(){
-    this.gestionmarcaservice.agregarmarca(this.nombreMarca)
-  }
   
 }

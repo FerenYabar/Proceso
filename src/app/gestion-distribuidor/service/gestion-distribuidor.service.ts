@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProductoLocal } from '../../modelo/productolocal.class';
-import { productos, Producto } from '../../modelo/producto.class';
+import { Producto } from '../../modelo/producto.class';
 import { localactivo } from '../../login/login-main/services/login.service';
 import {HttpClient} from "@angular/common/http"
 
@@ -17,12 +17,12 @@ export class GestionDistribuidorService {
   public productoslocal:ProductoLocal[] = []
 
   get getproductofaltantes(){
-    const productoslocalfaltante:Producto[]=productos
-    const productosenlocal:ProductoLocal[]=this.productoslocal.filter(element=>element.getlocalProductoLocal==localactivo[0])
+    const productoslocalfaltante:Producto[]=[]
+    const productosenlocal:ProductoLocal[]=this.productoslocal.filter(element=>element.tieneLocal==localactivo[0])
     const productosfaltantes:Producto[]=[]
     let result:Producto[]=[]
     productosenlocal.forEach(element => {
-      productosfaltantes.push(element.getproducto)
+      productosfaltantes.push(element.tieneProducto)
     });
     result = productoslocalfaltante.filter(el => !productosfaltantes.includes(el))
     return result

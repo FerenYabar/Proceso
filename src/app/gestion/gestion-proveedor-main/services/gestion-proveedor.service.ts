@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import {HttpClient} from "@angular/common/http";
-import { Local, locales } from '../../../modelo/local.class';
+import { Local} from '../../../modelo/local.class';
 
 @Injectable({
     providedIn:'root'

@@ -1,7 +1,7 @@
 
         <div class="col-s-12">
             <div class="titulo">
-                <h1 *ngIf="productoService.categoria.length!=0">{{productoService.categoria[0].getnombreCategoria}}</h1>
+                <h1 *ngIf="productoService.categoria.length!=0">{{productoService.categoria[0].nombreCategoria}}</h1>
             </div>
         </div>
 
@@ -18,8 +18,8 @@
                         </div>
                         <div class="boton">
                             <ul>
-                                <li><button  *ngIf="productoService.usuarioactivo.length==0 && productoService.localactivo.length==0 && productoService.adminactivo.length==0" (click)="productoService.login()">Carrito</button></li>
-                                <li *ngIf="productoService.usuarioactivo.length!=0 || productoService.localactivo.length!=0 || productoService.adminactivo.length!=0" ><button (click)="productoService.agregar(productolocal1)">Carrito</button></li>
+                                <li><button  *ngIf="productoService.usuarioactivo=='' && productoService.localactivo=='' && productoService.adminactivo==''" (click)="productoService.login()">Carrito</button></li>
+                                <li *ngIf="productoService.usuarioactivo!='' || productoService.localactivo!='' || productoService.adminactivo!=''" ><button (click)="productoService.agregar(productolocal1)">Carrito</button></li>
                             </ul>
                         </div>
                 </div>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Usuario, usuarios } from '../../modelo/usuario.class';
+import { Usuario} from '../../modelo/usuario.class';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({

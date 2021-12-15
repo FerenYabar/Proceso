@@ -1,5 +1,4 @@
 import { Injectable } from "@angular/core";
-import { Categoria, categorias } from '../../../modelo/categoria.class';
 import { Producto } from '../../../modelo/producto.class';
 import { Marca } from '../../../modelo/marca.class';
 import { HttpClient } from '@angular/common/http';

@@ -9,29 +9,29 @@
         <div class="col-s-12 col-m-6 " *ngIf="serviceUsuario.usuario.length!=0">
             <div class="info" >
                 <h1>Usuario</h1>
-                <p>{{ serviceUsuario.usuario[0].getusuariousuario}}</p>
+                <p>{{ serviceUsuario.usuario[0].login}}</p>
                 <h1>Nombres y Apellidos</h1>
-                <p>{{ serviceUsuario.usuario[0].getnombreUsuario}}  {{serviceUsuario.usuario[0].getApellidoUsuario }}</p>
+                <p>{{ serviceUsuario.usuario[0].nombreUsuario}}  {{serviceUsuario.usuario[0].apellidoUsuario }}</p>
                 <h1>Direccion</h1>
-                <p>{{ serviceUsuario.usuario[0].getDireccionUsuario }}</p>
+                <p>{{ serviceUsuario.usuario[0].direccion }}</p>
                 <h1>DNI</h1>
-                <p>{{ serviceUsuario.usuario[0].getdniUsuario }}</p>
+                <p>{{ serviceUsuario.usuario[0].dniUsuario }}</p>
                 <h1>Numero de Contacto</h1>
-                <p>{{ serviceUsuario.usuario[0].getcelularUsuario }}</p>
+                <p>{{ serviceUsuario.usuario[0].celular }}</p>
                 <h1>Correo Electronico</h1>
-                <p>{{ serviceUsuario.usuario[0].getCorreoUsuario }}</p>
+                <p>{{ serviceUsuario.usuario[0].correo }}</p>
             </div>
         </div>
         <div *ngIf="serviceUsuario.local.length!=0">
             <div class="info" >
                 <h1>COdigo Local</h1>
-                <p>{{serviceUsuario.local[0].getcodLocal}}</p>
+                <p>{{serviceUsuario.local[0].codLocal}}</p>
                 <h1>Nombre Local</h1>
-                <p>{{ serviceUsuario.local[0].getnombreLocal}}  </p>
+                <p>{{ serviceUsuario.local[0].nombreLocal}}  </p>
                 <h1>RUC</h1>
-                <p>{{ serviceUsuario.local[0].getrucLocal}}</p>
+                <p>{{ serviceUsuario.local[0].rucLocal}}</p>
                 <h1>ubicacion</h1>
-                <p>{{ serviceUsuario.local[0].getubicacionLocal }}</p>
+                <p>{{ serviceUsuario.local[0].ubicacionLocal }}</p>
             </div>
           </div>
 

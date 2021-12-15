@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductoLocal} from 'src/app/modelo/productolocal.class';
-import { Reserva } from 'src/app/modelo/reserva.class';
-
-import { DetalleReserva } from '../../modelo/detallereserva.class';
 import { descripcionboletaService } from '../services/descripcion-boleta.service';
 
 

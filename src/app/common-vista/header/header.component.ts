@@ -13,17 +13,20 @@ export class HeaderComponent implements OnInit{
   ) { 
 
   }
-  localactivo=localactivo
-  usuarioactivo=usuarioactivo
-  adminactivo=adminactivo
+  localactivo=localStorage.getItem("localactivo")
+  usuarioactivo=localStorage.getItem("usuarioactivo")
+  adminactivo=localStorage.getItem("adminactivo")
 
   ngOnInit(): void {
+    localStorage.setItem("categoriaactiva","")
   }
   borrar(){
-    localactivo.splice(0,1)
-    usuarioactivo.splice(0,1)
-    adminactivo.splice(0,2)
+    localStorage.setItem("localactivo","")
+  localStorage.setItem("usuarioactivo","")
+  localStorage.setItem("adminactivo","")
+
   }
+
  
   
   

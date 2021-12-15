@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Gestionproductoservice } from './services/gestion-producto.service';
 import { Producto } from '../../modelo/producto.class';
-import { Categoria, categorias } from '../../modelo/categoria.class';
-import { Marca, marcas } from '../../modelo/marca.class';
+import { Categoria} from '../../modelo/categoria.class';
+import { Marca} from '../../modelo/marca.class';
 
 
 @Component({
@@ -48,7 +48,7 @@ export class GestionProductoMainComponent implements OnInit {
   }
 
 
-public marca01=new Marca(1,"Cartabio",[])
+public marca01=new Marca(1,"Cartabio")
 public ron =new Categoria(17,"Ron")
 
 public nuevoProducto =new Producto(0,"",0,"",0,"",this.marca01,this.ron)

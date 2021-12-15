@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import {HttpClient} from "@angular/common/http"
-import { Marca, marcas } from '../../../modelo/marca.class';
+import { Marca} from '../../../modelo/marca.class';
 import { Observable, Subscription } from "rxjs";
 
 @Injectable({
@@ -22,33 +22,23 @@ export class GestionMarcaservice{
     }
 
 
-    agregarmarca(nombreMarca:String){
-        const nuevoMarca:Marca=new Marca(0,nombreMarca,[])
-        marcas.push(nuevoMarca);
-    }
 
-    async agregarmarcaa(marca: Marca){
+    async agregarmarca(marca: Marca){
         const promesa = this.http.post<any>(this.baseUrl,marca).toPromise();
         return promesa.then(value =>{return true});
     }
 
-    async eliminarmarcaa(id: number){
+    async eliminarmarca(id: number){
         const promesa = this.http.delete(this.baseUrl+'/'+id).toPromise();
         return promesa.then(value => {return true});
     }
 
-    async atualizarmarcaa(id: number, marca: Marca){
+    async atualizarmarca(id: number, marca: Marca){
         const promesa = this.http.put<any>(this.baseUrl+'/'+id, marca).toPromise();
         return promesa.then(value => {return true})
     }
 
    
 
-    eliminarmarca(eliminacion:number[]){
-        eliminacion.sort(function(a, b){return b - a});
-        for(let i:number=0;eliminacion.length>i;i++){
-            marcas.splice(eliminacion[i],1)    
-          }
-    }
 
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Reserva, reservas } from '../modelo/reserva.class';
+import { Reserva} from '../modelo/reserva.class';
 import { usuarioactivo, localactivo } from '../login/login-main/services/login.service';
-import { usuarios, Usuario } from '../modelo/usuario.class';
+import { Usuario } from '../modelo/usuario.class';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
@@ -13,31 +13,33 @@ export class ServiciosService {
 
   constructor(private route:Router,
   private http:HttpClient) { 
-    this.http.get<Reserva[]>('http://127.0.0.1:8080/api/reserva').subscribe((resp:any)=>{console.log(resp);this.reservass=resp;});
+    if(localStorage.getItem("usuarioactivo")!=''){
+      this.http.get<Reserva[]>("http://localhost:8080/api/reservausuarioactivas"+"/"+localStorage.getItem("usuarioactivo")).subscribe(resp=>this.reservass=resp);
+    }else{
+      this.http.get<Reserva[]>("http://localhost:8080/api/reservalocalactivas"+"/"+localStorage.getItem("localactivo")).subscribe(resp=>this.reservass=resp);
+      
+    }
   }
   reservass:Reserva[]=[]
-
+  usuarioactivo=localStorage.getItem("usuarioactivo")
+  localactivo=localStorage.getItem("localactivo")
   get getlistareservas(){
-    if(usuarioactivo.length!=0){
-      this.reservass = this.reservass.filter(element => element.getusuarioreserva ==  usuarioactivo[0] );
-     
-   }else{
-      this.reservass = this.reservass.filter(element => element.getlocalReserva ==  localactivo[0]);
-    }
     return this.reservass;
+    
   }
 
-  eliminar(reserva:Reserva){
-    const promesa= this.http.delete<any>('http://127.0.0.1:8080/api/reserva' + '/' + reserva.codReserva).toPromise();
+  eliminar(codReserva:number){
+    const promesa= this.http.delete<any>('http://127.0.0.1:8080/api/reserva' + '/' + codReserva).toPromise().then(any=>this.getlistareservas);
+    return promesa.then(value =>{return true});
     }
   
   // }
-  usuarioactivo=usuarioactivo
-   localactivo=localactivo
+  
+   
 
-   vista(reserva:Reserva){
-    reservaactiva.splice(0,1)
-    reservaactiva.push(reserva)
+   vista(codReserva:number){
+     console.log("hola")
+    localStorage.setItem("reservaactiva",codReserva.toString())
     this.route.navigate(['descripcion-boleta'])
 
  }

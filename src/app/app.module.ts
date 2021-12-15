@@ -46,9 +46,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  // providers: [
-
-  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
